@@ -6,16 +6,18 @@ import {RegisterComponent} from './components/register/register.component';
 import {MonthlyBalanceComponent} from './components/monthly-balance/monthly-balance.component';
 import {YearlyBalanceComponent} from './components/yearly-balance/yearly-balance.component';
 
+import {AuthGuard} from './services/auth.guard';
+
 const routes: Routes = [
     {path: '', redirectTo: '/login', pathMatch: 'full'},
     {path: 'login', component: LoginComponent},
     {path: 'register', component: RegisterComponent},
-    {path: 'monthly-balance/:year/:month/add-expenses', component: MonthlyBalanceComponent},
-    {path: 'monthly-balance/:year/:month', component: MonthlyBalanceComponent},
-    {path: 'monthly-balance/:year', component: MonthlyBalanceComponent},
-    {path: 'monthly-balance', component: MonthlyBalanceComponent},
-    {path: 'yearly-balance/:year', component: YearlyBalanceComponent},
-    {path: 'yearly-balance', component: YearlyBalanceComponent}
+    {path: 'monthly-balance/:year/:month/add-expenses', canActivate: [AuthGuard], component: MonthlyBalanceComponent},
+    {path: 'monthly-balance/:year/:month', canActivate: [AuthGuard], component: MonthlyBalanceComponent},
+    {path: 'monthly-balance/:year', canActivate: [AuthGuard], component: MonthlyBalanceComponent},
+    {path: 'monthly-balance', canActivate: [AuthGuard], component: MonthlyBalanceComponent},
+    {path: 'yearly-balance/:year', canActivate: [AuthGuard], component: YearlyBalanceComponent},
+    {path: 'yearly-balance', canActivate: [AuthGuard], component: YearlyBalanceComponent}
 ];
 
 @NgModule({

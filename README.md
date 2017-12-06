@@ -28,12 +28,12 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 ## Deploying an Angular App to Github Pages
 
-https://developer.telerik.com/featured/quick-angular-2-hosting-angular-cli-github-pages/
-
-https://alligator.io/angular/deploying-angular-app-github-pages/
+https://pages.github.com/
 
 ```
-yarn add global angular-cli-ghpages
-ng build --prod --base-href "https://plamen911.github.io/angular-budget-planner/"
-ngh
+ng build --prod --base-href "https://plamen911.github.io/"
 ```
+
+https://www.digitalocean.com/community/tutorials/how-to-set-up-let-s-encrypt-with-nginx-server-blocks-on-ubuntu-16-04
+
+

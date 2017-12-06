@@ -5,7 +5,9 @@ import {Observable} from 'rxjs/Observable';
 import {User} from '../models/User';
 
 // const baseUrl = 'http://localhost:5000/';
-const baseUrl = 'http://138.68.111.47:5000/';
+const baseUrl = 'https://plamen.thewebdesignco.com:5000/';
+// const baseUrl = 'https://plamen.thewebdesignco.com/budget-planner/';
+// const baseUrl = 'http://plamen.thewebdesignco.com/budget-planner/';
 
 @Injectable()
 export class RemoteService {
