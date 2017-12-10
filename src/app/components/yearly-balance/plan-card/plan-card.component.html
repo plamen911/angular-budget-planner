@@ -1,0 +1,24 @@
+<div class="card text-white bg-secondary">
+    <div class="card-body">
+        <blockquote class="card-blockquote">
+            <h2>{{numberToMonth(model.month)}}</h2>
+            <h4>Year {{model.year}}</h4>
+            <label>Budget:</label>
+            <input type="text"
+                   name="budget"
+                   [(ngModel)]="model.budget"
+                   class="col-md-9"
+                   disabled=""
+            />
+            <label>Balance:</label>
+            <input type="text"
+                   name="balance"
+                   [(ngModel)]="model.balance"
+                   class="col-md-9"
+                   disabled="">
+            <div class="space-top">
+                <a routerLink="/monthly-balance/{{model.year}}/{{model.month}}"class="btn btn-secondary">Details</a>
+            </div>
+        </blockquote>
+    </div>
+</div>

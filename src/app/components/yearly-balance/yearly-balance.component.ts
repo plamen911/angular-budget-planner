@@ -3,6 +3,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {RemoteService} from '../../services/remote.service';
 import {AuthService} from '../../services/auth.service';
 import {MessageService} from '../../services/message.service';
+import {MonthlyBalanceModel} from '../../models/monthly-balance.model';
 
 @Component({
     selector: 'app-yearly-balance',
@@ -10,6 +11,8 @@ import {MessageService} from '../../services/message.service';
     styleUrls: ['./yearly-balance.component.css']
 })
 export class YearlyBalanceComponent implements OnInit {
+    public year: number;
+    public models: MonthlyBalanceModel[];
 
     constructor(private route: ActivatedRoute,
                 private router: Router,
@@ -19,23 +22,16 @@ export class YearlyBalanceComponent implements OnInit {
     }
 
     ngOnInit() {
-        if (!this.authService.isAuthed()) {
-            this.messageService.add('Access denied! Redirecting to login...');
-            this.router.navigateByUrl(`/login`);
-        }
-
-        const year: number = +this.route.snapshot.paramMap.get('year') || +(new Date()).getFullYear();
-        this.remoteService.getYearlyBalance(year)
+        this.year = +this.route.snapshot.paramMap.get('year') || (new Date()).getFullYear();
+        this.remoteService.getYearlyBalance(this.year)
             .subscribe(
                 (res: any) => {
-                    this.messageService.add('Yearly balance for ' + year + ': ' + JSON.stringify(res));
-                    if (res.success) {
-
-                    } else if (res.errors) {
-                        this.messageService.add('Failed to get yearly balance: ' + JSON.stringify(res.errors));
-                    }
-                },
-                error => console.warn(error)
+                    this.messageService.add('Loaded months: ' + JSON.stringify(res));
+                    this.models = Object.keys(res).map(month => (
+                            new MonthlyBalanceModel(this.year, +month, res[month].budget, res[month].balance)
+                        )
+                    );
+                }
             );
     }
 

@@ -8,6 +8,7 @@ import {MessageService} from '../../services/message.service';
 import {RemoteService} from '../../services/remote.service';
 import {BudgetPlanner} from './budget-planner.model';
 import {BudgetPlannerService} from '../../services/budget-planner.service';
+import {numberToMonth} from '../../utils/utils';
 
 @Component({
     selector: 'app-monthly-balance',
@@ -21,6 +22,8 @@ export class MonthlyBalanceComponent implements OnInit, OnDestroy {
     public budgetPlanner: BudgetPlanner;
     public subscription: Subscription;
 
+    public numberToMonth: any;
+
     constructor(private router: Router,
                 private route: ActivatedRoute,
                 private remoteService: RemoteService,
@@ -32,6 +35,7 @@ export class MonthlyBalanceComponent implements OnInit, OnDestroy {
 
         this.budgetPlanner = new BudgetPlanner(0, 0);
         this.toastr.setRootViewContainerRef(vcr);
+        this.numberToMonth = numberToMonth;
 
         this.subscription = this.budgetPlannerService.expenseDeleted$.subscribe(
             (expenseId: string): void => {
@@ -48,11 +52,6 @@ export class MonthlyBalanceComponent implements OnInit, OnDestroy {
     }
 
     ngOnInit() {
-        if (!this.authService.isAuthed()) {
-            this.messageService.add('Access denied! Redirecting to login...');
-            this.router.navigateByUrl(`/login`);
-        }
-
         this.year = +this.route.snapshot.paramMap.get('year') || (new Date()).getFullYear();
         this.month = +this.route.snapshot.paramMap.get('month') || (new Date()).getMonth() + 1;
 
