@@ -3,26 +3,58 @@
         <h1>Register</h1>
     </div>
 </div>
-<form (submit)="register($event)">
+<form (submit)="onSubmit()" #registerForm="ngForm">
     <div class="row">
         <div class="col-md-3">
             <div class="form-group">
                 <label for="name" class="form-control-label">Name</label>
-                <input type="text" id="name" name="name" [(ngModel)]="user.name" class="form-control" placeholder="Name" />
+                <input type="text"
+                       id="name"
+                       name="name"
+                       [(ngModel)]="model.name"
+                       class="form-control"
+                       placeholder="Name"
+                       #name="ngModel"
+                />
             </div>
             <div class="form-group">
                 <label for="email" class="form-control-label">E-mail</label>
-                <input type="email" id="email" name="email" [(ngModel)]="user.email" class="form-control" placeholder="E-mail" />
+                <input type="email"
+                       id="email"
+                       name="email"
+                       [(ngModel)]="model.email"
+                       class="form-control"
+                       placeholder="E-mail"
+                       #email="ngModel"
+                />
             </div>
             <div class="form-group">
                 <label for="password" class="form-control-label">Password</label>
-                <input type="password" id="password" name="password" [(ngModel)]="user.password" class="form-control" placeholder="Password" />
+                <input type="password"
+                       id="password"
+                       name="password"
+                       [(ngModel)]="model.password"
+                       class="form-control"
+                       placeholder="Password"
+                       #password="ngModel"
+                />
             </div>
             <div class="form-group">
                 <label for="confPassword" class="form-control-label">Repeat password</label>
-                <input type="password" id="confPassword" name="confPassword" [(ngModel)]="user.confPassword" class="form-control" placeholder="Password" />
+                <input type="password"
+                       id="confPassword"
+                       name="confPassword"
+                       [(ngModel)]="model.confPassword"
+                       class="form-control"
+                       placeholder="Password"
+                       #confPassword="ngModel"
+                />
             </div>
-            <input type="submit" class="btn btn-secondary" value="Register"/>
+            <input type="submit"
+                   class="btn btn-secondary"
+                   [value]="submitted ? 'please wait...' : 'Register'"
+                   [disabled]="submitted"
+            />
         </div>
     </div>
 </form>

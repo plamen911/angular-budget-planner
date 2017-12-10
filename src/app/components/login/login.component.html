@@ -3,18 +3,38 @@
         <h1>Login</h1>
     </div>
 </div>
-<form (submit)="login($event)">
+<form (ngSubmit)="onSubmit()" #loginForm="ngForm">
     <div class="row space-top">
         <div class="col-md-3">
             <div class="form-group">
                 <label for="email" class="form-control-label">E-mail</label>
-                <input type="email" id="email" name="email" [(ngModel)]="user.email" class="form-control" placeholder="E-mail" />
+                <input type="email"
+                       id="email"
+                       name="email"
+                       [(ngModel)]="model.email"
+                       class="form-control"
+                       placeholder="E-mail"
+                       required="required"
+                       #email="ngModel"
+                />
             </div>
             <div class="form-group">
                 <label for="password" class="form-control-label">Password</label>
-                <input type="password" id="password" name="password" [(ngModel)]="user.password" class="form-control" placeholder="Password" />
+                <input type="password"
+                       id="password"
+                       name="password"
+                       [(ngModel)]="model.password"
+                       class="form-control"
+                       placeholder="Password"
+                       required="required"
+                       #password="ngModel"
+                />
             </div>
-            <input type="submit" class="btn btn-secondary" value="Login" />
+            <input type="submit"
+                   class="btn btn-secondary"
+                   [value]="submitted ? 'please wait...' : 'Login'"
+                   [disabled]="submitted"
+            />
         </div>
     </div>
 </form>

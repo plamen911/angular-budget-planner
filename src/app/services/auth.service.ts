@@ -32,8 +32,4 @@ export class AuthService {
         }
         return localStorage.getItem('token')
     }
-
-    isAuthor(record: any): boolean {
-        return record._acl.creator === localStorage.getItem('username')
-    }
 }

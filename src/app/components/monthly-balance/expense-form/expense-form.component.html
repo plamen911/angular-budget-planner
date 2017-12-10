@@ -1,0 +1,70 @@
+<div class="container">
+    <div class="row space-top">
+        <div class="col-md-12">
+            <h1>Add Expenses</h1>
+            <h3>{{numberToMonth(month)}} {{year}}</h3>
+        </div>
+    </div>
+    <div class="row space-top">
+        <div class="col-md-10">
+            <form (ngSubmit)="onSubmit()" #expenseForm="ngForm">
+                <legend>Add a new expense</legend>
+                <div class="form-group">
+                    <label for="name" class="col-md-2">Name:</label>
+                    <input type="text"
+                           id="name"
+                           name="name"
+                           [(ngModel)]="model.name"
+                           class="col-md-2"
+                           placeholder="Name"
+                           #name="ngModel"
+                    />
+                </div>
+                <div class="form-group">
+                    <label for="category" class="col-md-2">Category:</label>
+                    <select
+                            id="category"
+                            name="category"
+                            [(ngModel)]="model.category"
+                            class="col-md-2 pl-2"
+                            #category="ngModel"
+                    >
+                        <option *ngFor="let category of categories" value="{{category}}">{{category}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="amount" class="col-md-2">Cost:</label>
+                    <input type="number"
+                           id="amount"
+                           name="amount"
+                           [(ngModel)]="model.amount"
+                           class="col-md-2"
+                           placeholder="Cost"
+                           #amount="ngModel"
+                    />
+                </div>
+                <div class="form-group">
+                    <label for="date" class="col-md-2">Payment Date:</label>
+                    <input type="number"
+                           id="date"
+                           name="date"
+                           [(ngModel)]="model.date"
+                           class="col-md-2"
+                           placeholder="Payment Date"
+                           #date="ngModel"
+                    />
+                </div>
+                <input type="button"
+                       (click)="onCancel($event)"
+                       value="Cancel"
+                       class="btn btn-default"
+                />
+                <input type="submit"
+                       [value]="submitted ? 'please wait...' : 'Add'"
+                       [disabled]="submitted"
+                       class="btn btn-secondary"
+                />
+            </form>
+        </div>
+    </div>
+</div>

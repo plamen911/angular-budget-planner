@@ -1,10 +1,11 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewContainerRef} from '@angular/core';
 import {Router} from '@angular/router';
+import {ToastsManager} from 'ng2-toastr/ng2-toastr';
 
 import {RemoteService} from '../../services/remote.service';
 import {AuthService} from '../../services/auth.service';
 import {MessageService} from '../../services/message.service';
-import {User} from '../../models/User';
+import {LoginModel} from './login.model';
 
 @Component({
     selector: 'app-login',
@@ -12,13 +13,18 @@ import {User} from '../../models/User';
     styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-    user: User;
+    public model: LoginModel;
+    public submitted: boolean;
 
-    constructor(private route: Router,
+    constructor(private router: Router,
                 private remoteService: RemoteService,
                 private authService: AuthService,
-                private messageService: MessageService) {
-        this.user = new User('', '', '');
+                private messageService: MessageService,
+                private toastr: ToastsManager,
+                private vcr: ViewContainerRef) {
+        this.model = new LoginModel('', '');
+        this.submitted = false;
+        this.toastr.setRootViewContainerRef(vcr);
     }
 
     ngOnInit() {
@@ -28,27 +34,32 @@ export class LoginComponent implements OnInit {
         }
     }
 
-    login(e): void {
-        e.preventDefault();
-        const email = this.user.email.trim();
-        const password = this.user.password.trim();
+    onSubmit(): void {
+        // client-side validation
+        if (!this.model.email.trim() || !this.model.password.trim()) {
+            this.remoteService.displayError('Incorrect email or password.');
+            return;
+        }
 
-        this.messageService.add(`Trying to login with email "${email}"...`);
+        this.submitted = true;
+        this.messageService.add(`Trying to login with email '${this.model.email}'...`);
 
-        this.remoteService.login(email, password)
+        this.remoteService.login(this.model)
             .subscribe(
-                (res: any) => {
+                (res: any): void => {
+                    this.submitted = false;
                     this.messageService.add('Login response: ' + JSON.stringify(res));
                     if (res.success) {
                         this.authService.saveSession(res);
-                        this.redirectToPage();
-                    } else if (res.errors) {
-                        this.messageService.add('Failed to login: ' + JSON.stringify(res.errors));
+                        this.remoteService.displaySuccess(res.message, this.redirectToPage.bind(this));
                     }
                 },
-                error => {
+                (error): void => {
+                    this.submitted = false;
                     this.messageService.add(error.message);
-                    console.warn(error)
+                },
+                (): void => {
+                    this.submitted = false;
                 }
             );
     }
@@ -56,6 +67,6 @@ export class LoginComponent implements OnInit {
     private redirectToPage(): void {
         const year: number = +(new Date()).getFullYear();
         const month: number = +(new Date()).getMonth() + 1;
-        this.route.navigateByUrl(`/monthly-balance/${year}/${month}`);
+        this.router.navigateByUrl(`/monthly-balance/${year}/${month}`);
     }
 }

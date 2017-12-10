@@ -1,0 +1,30 @@
+<form (ngSubmit)="onSubmit()" #plannerForm="ngForm">
+    <h4>Planner</h4>
+    <div class="form-group">
+        <label for="income" class="form-control-label">Income:</label>
+        <input type="number"
+               id="income"
+               name="income"
+               [(ngModel)]="model.income"
+               class="form-control"
+               placeholder="Income"
+               #income="ngModel"
+        />
+    </div>
+    <div class="form-group">
+        <label for="budget" class="form-control-label">Budget:</label>
+        <input type="number"
+               id="budget"
+               name="budget"
+               [(ngModel)]="model.budget"
+               class="form-control"
+               placeholder="Budget"
+               #budget="ngModel"
+        />
+    </div>
+    <input type="submit"
+           class="btn btn-secondary"
+           [value]="submitted ? 'please wait...' : 'Save'"
+           [disabled]="submitted"
+    />
+</form>

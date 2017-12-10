@@ -1,6 +1,8 @@
 import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
-import {FormsModule} from '@angular/forms';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {ToastModule} from 'ng2-toastr/ng2-toastr';
 
 import {AppComponent} from './app.component';
 import {LoginComponent} from './components/login/login.component';
@@ -10,7 +12,6 @@ import {YearlyBalanceComponent} from './components/yearly-balance/yearly-balance
 
 import {AppRoutingModule} from './app-routing.module';
 
-
 // Modules
 import {HttpClientModule} from '@angular/common/http';
 
@@ -18,21 +19,28 @@ import {HttpClientModule} from '@angular/common/http';
 import {AuthService} from './services/auth.service';
 import {MessageService} from './services/message.service';
 import {RemoteService} from './services/remote.service';
+import {AuthGuard} from './services/auth.guard';
+import {BudgetPlannerService} from './services/budget-planner.service';
 
 // Interceptors
 import {HTTP_INTERCEPTORS} from '@angular/common/http';
 import {AuthInterceptor} from './interceptors/auth.interceptor';
-import { MessagesComponent } from './components/messages/messages.component';
-import { HeaderComponent } from './components/header/header.component';
-import { FooterComponent } from './components/footer/footer.component';
-
+import {MessagesComponent} from './components/messages/messages.component';
+import {HeaderComponent} from './components/header/header.component';
+import {FooterComponent} from './components/footer/footer.component';
+import {PlannerFormComponent} from './components/monthly-balance/planner-form/planner-form.component';
+import {ExpenseListComponent} from './components/monthly-balance/expense-list/expense-list.component';
+import { ExpenseFormComponent } from './components/monthly-balance/expense-form/expense-form.component';
 
 @NgModule({
     imports: [
         BrowserModule,
+        BrowserAnimationsModule,
         FormsModule,
+        ReactiveFormsModule,
         AppRoutingModule,
-        HttpClientModule
+        HttpClientModule,
+        ToastModule.forRoot()
     ],
     declarations: [
         AppComponent,
@@ -42,7 +50,10 @@ import { FooterComponent } from './components/footer/footer.component';
         YearlyBalanceComponent,
         MessagesComponent,
         HeaderComponent,
-        FooterComponent
+        FooterComponent,
+        PlannerFormComponent,
+        ExpenseListComponent,
+        ExpenseFormComponent
     ],
     providers: [
         {
@@ -52,7 +63,9 @@ import { FooterComponent } from './components/footer/footer.component';
         },
         AuthService,
         MessageService,
-        RemoteService
+        RemoteService,
+        AuthGuard,
+        BudgetPlannerService
     ],
     bootstrap: [AppComponent]
 })
