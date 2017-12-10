@@ -1,4 +1,4 @@
-import {Component, OnInit, OnDestroy, ViewContainerRef} from '@angular/core';
+import {Component, OnInit, OnDestroy} from '@angular/core';
 import {Router, ActivatedRoute} from '@angular/router';
 import {ToastsManager} from 'ng2-toastr/ng2-toastr';
 import {Subscription} from 'rxjs/Subscription';
@@ -28,10 +28,7 @@ export class PlannerFormComponent implements OnInit, OnDestroy {
                 private authService: AuthService,
                 private messageService: MessageService,
                 private budgetPlannerService: BudgetPlannerService,
-                private toastr: ToastsManager,
-                private vcr: ViewContainerRef) {
-
-        this.toastr.setRootViewContainerRef(vcr);
+                private toastr: ToastsManager) {
         this.model = new BudgetPlanner(0, 0);
         this.submitted = false;
 
@@ -64,8 +61,8 @@ export class PlannerFormComponent implements OnInit, OnDestroy {
                     if (res.success) {
                         this.model.budget = res.plan.budget;
                         this.model.income = res.plan.income;
-
-                        this.remoteService.displaySuccess(res.message, this.redirectToPage.bind(this));
+                        this.toastr.success(res.message);
+                        this.redirectToPage();
                     }
                 },
                 (error): void => {

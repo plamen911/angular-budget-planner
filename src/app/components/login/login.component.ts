@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewContainerRef} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {ToastsManager} from 'ng2-toastr/ng2-toastr';
 
@@ -20,11 +20,9 @@ export class LoginComponent implements OnInit {
                 private remoteService: RemoteService,
                 private authService: AuthService,
                 private messageService: MessageService,
-                private toastr: ToastsManager,
-                private vcr: ViewContainerRef) {
+                private toastr: ToastsManager) {
         this.model = new LoginModel('', '');
         this.submitted = false;
-        this.toastr.setRootViewContainerRef(vcr);
     }
 
     ngOnInit() {
@@ -37,7 +35,7 @@ export class LoginComponent implements OnInit {
     onSubmit(): void {
         // client-side validation
         if (!this.model.email.trim() || !this.model.password.trim()) {
-            this.remoteService.displayError('Incorrect email or password.');
+            this.toastr.error('Incorrect email or password.');
             return;
         }
 
@@ -51,7 +49,8 @@ export class LoginComponent implements OnInit {
                     this.messageService.add('Login response: ' + JSON.stringify(res));
                     if (res.success) {
                         this.authService.saveSession(res);
-                        this.remoteService.displaySuccess(res.message, this.redirectToPage.bind(this));
+                        this.toastr.success(res.message);
+                        this.redirectToPage();
                     }
                 },
                 (error): void => {

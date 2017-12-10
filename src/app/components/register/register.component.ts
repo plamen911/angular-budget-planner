@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewContainerRef} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {ToastsManager} from 'ng2-toastr';
 
@@ -21,11 +21,9 @@ export class RegisterComponent implements OnInit {
                 private remoteService: RemoteService,
                 private authService: AuthService,
                 private messageService: MessageService,
-                private toastr: ToastsManager,
-                private vcr: ViewContainerRef) {
+                private toastr: ToastsManager) {
         this.model = new RegisterModel('', '', '', '');
         this.submitted = false;
-        this.toastr.setRootViewContainerRef(vcr);
     }
 
     ngOnInit() {
@@ -37,19 +35,19 @@ export class RegisterComponent implements OnInit {
 
     onSubmit() {
         if (!this.model.name.trim()) {
-            this.remoteService.displayError('Please provide your name.');
+            this.toastr.error('Please provide your name.');
             return;
         }
         if (!this.model.email.trim()) {
-            this.remoteService.displayError('Please provide a correct email address.');
+            this.toastr.error('Please provide a correct email address.');
             return;
         }
         if (!this.model.password.trim() || this.model.password.length < 4) {
-            this.remoteService.displayError('Password must have at least 4 characters.');
+            this.toastr.error('Password must have at least 4 characters.');
             return;
         }
         if (this.model.password !== this.model.confPassword) {
-            this.remoteService.displayError('Passwords do not match.');
+            this.toastr.error('Passwords do not match.');
             return;
         }
 
@@ -69,7 +67,8 @@ export class RegisterComponent implements OnInit {
                                     this.messageService.add('Login response: ' + JSON.stringify(res));
                                     if (res.success) {
                                         this.authService.saveSession(res);
-                                        this.remoteService.displaySuccess(res.message, this.redirectToPage.bind(this));
+                                        this.toastr.success(res.message);
+                                        this.redirectToPage();
                                     }
                                 },
                                 (error): any => {

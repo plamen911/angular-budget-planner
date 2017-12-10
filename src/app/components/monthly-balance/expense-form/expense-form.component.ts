@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewContainerRef} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Router, ActivatedRoute} from '@angular/router';
 import {ToastsManager} from 'ng2-toastr/ng2-toastr';
 
@@ -29,11 +29,7 @@ export class ExpenseFormComponent implements OnInit {
                 private authService: AuthService,
                 private messageService: MessageService,
                 private budgetPlannerService: BudgetPlannerService,
-                private toastr: ToastsManager,
-                private vcr: ViewContainerRef) {
-
-        this.toastr.setRootViewContainerRef(vcr);
-
+                private toastr: ToastsManager) {
         this.year = +this.route.snapshot.paramMap.get('year') || (new Date()).getFullYear();
         this.month = +this.route.snapshot.paramMap.get('month') || (new Date()).getMonth() + 1;
 
@@ -50,19 +46,19 @@ export class ExpenseFormComponent implements OnInit {
     onSubmit(): void {
         // client-side validation
         if (!this.model.name.trim()) {
-            this.remoteService.displayError('Please provide expense name.');
+            this.toastr.error('Please provide expense name.');
             return;
         }
         if (this.model.amount && isNaN(this.model.amount)) {
-            this.remoteService.displayError( 'Amount must be a number.');
+            this.toastr.error( 'Amount must be a number.');
             return;
         }
         if (!this.model.date || isNaN(this.model.date) || this.model.date < 1 || this.model.date > 31) {
-            this.remoteService.displayError( 'Date must be an integer between 1 and 31.');
+            this.toastr.error( 'Date must be an integer between 1 and 31.');
             return;
         }
         if (!this.model.category) {
-            this.remoteService.displayError('Category must be at least 1 character long.');
+            this.toastr.error('Category must be at least 1 character long.');
             return;
         }
 
@@ -77,7 +73,8 @@ export class ExpenseFormComponent implements OnInit {
                     this.submitted = false;
                     this.messageService.add('Expense added response: ' + JSON.stringify(res));
                     if (res.success) {
-                        this.remoteService.displaySuccess(res.message, this.redirectToPage.bind(this));
+                        this.toastr.success(res.message);
+                        this.redirectToPage();
                     }
                 },
                 (error): void => {

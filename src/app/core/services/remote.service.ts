@@ -88,12 +88,6 @@ export class RemoteService {
         // }
     }
 
-    displaySuccess(message: string, cb: any): void {
-        this.toastr.success(message).then(() => {
-            setTimeout(cb, 2000);
-        });
-    }
-
     displayError(res: any): void {
         if (typeof res === 'string') {
             this.toastr.error(res);
