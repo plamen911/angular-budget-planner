@@ -19,7 +19,7 @@
             <td>{{expense.amount.toFixed(2)}}</td>
             <td>{{expense.date}}-{{expense.month}}-{{expense.year}}</td>
             <td>
-                <a href="#" class="btn btn-secondary">Delete</a>
+                <a href="#" (click)="onDelete($event, expense)" class="btn btn-secondary">Delete</a>
             </td>
         </tr>
     </tbody>

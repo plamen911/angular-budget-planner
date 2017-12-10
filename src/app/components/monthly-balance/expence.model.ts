@@ -1,5 +1,5 @@
 export class ExpenceModel {
-    constructor(public id: number,
+    constructor(public id: string,
                 public name: string,
                 public category: string,
                 public amount: number,

@@ -48,9 +48,6 @@ export class PlannerFormComponent implements OnInit, OnDestroy {
     }
 
     ngOnInit() {
-        // this.year = +this.route.snapshot.paramMap.get('year');
-        // this.month = +this.route.snapshot.paramMap.get('month');
-        // this.getMonthlyBalance(this.year, this.month);
     }
 
     onSubmit(): void {
@@ -68,17 +65,8 @@ export class PlannerFormComponent implements OnInit, OnDestroy {
                     this.submitted = false;
                     this.messageService.add('Server response: ' + JSON.stringify(res));
                     if (res.success) {
-
-                        console.log('here will broadcast...');
-                        console.log(res);
                         this.model.budget = res.plan.budget;
                         this.model.income = res.plan.income;
-
-                        const year = this.year;
-                        const month = this.month;
-                        const budgetPlanner = this.model;
-
-                        this.budgetPlannerService.updateBudgetPlanner({year, month, budgetPlanner});
 
                         this.remoteService.displaySuccess(res.message, this.redirectToPage.bind(this));
                     }
@@ -89,17 +77,6 @@ export class PlannerFormComponent implements OnInit, OnDestroy {
                 },
                 (): void => {
                     this.submitted = false;
-                }
-            );
-    }
-
-    private getMonthlyBalance(year: number, month: number): void {
-        this.messageService.add(`Loading monthly balance...`);
-        this.remoteService.getMonthlyBalance(year, month)
-            .subscribe(
-                (res: BudgetPlanner) => {
-                    this.messageService.add('Server response: ' + JSON.stringify(res));
-                    this.model = res;
                 }
             );
     }

@@ -37,7 +37,7 @@ export class ExpenseFormComponent implements OnInit {
         this.year = +this.route.snapshot.paramMap.get('year') || (new Date()).getFullYear();
         this.month = +this.route.snapshot.paramMap.get('month') || (new Date()).getMonth() + 1;
 
-        this.model = new ExpenceModel(0, '', this.categories[0], 0, 0, this.month, this.year);
+        this.model = new ExpenceModel(null, '', this.categories[0], 0, 0, this.month, this.year);
         this.submitted = false;
 
         this.numberToMonth = numberToMonth;

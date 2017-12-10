@@ -6,18 +6,18 @@ export class BudgetPlannerService {
 
     // Observable string sources
     private budgetPlannerLoadedSource = new Subject<any>();
-    private budgetPlannerUpdatedSource = new Subject<any>();
+    private expenseDeletedSource = new Subject<string>();
 
     // Observable string streams
     budgetPlannerLoaded$ = this.budgetPlannerLoadedSource.asObservable();
-    budgetPlannerUpdated$ = this.budgetPlannerUpdatedSource.asObservable();
+    expenseDeleted$ = this.expenseDeletedSource.asObservable();
 
     // Service budget planner commands
     loadBudgetPlanner(data: any) {
         this.budgetPlannerLoadedSource.next(data);
     }
 
-    updateBudgetPlanner(data: any) {
-        this.budgetPlannerUpdatedSource.next(data);
+    deleteExpense(expenseId: string) {
+        this.expenseDeletedSource.next(expenseId);
     }
 }

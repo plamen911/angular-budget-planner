@@ -33,9 +33,16 @@ export class MonthlyBalanceComponent implements OnInit, OnDestroy {
         this.budgetPlanner = new BudgetPlanner(0, 0);
         this.toastr.setRootViewContainerRef(vcr);
 
-        this.subscription = this.budgetPlannerService.budgetPlannerUpdated$.subscribe(
-            (res: any): void => {
-                this.loadBudgetPlanner(this.year, this.month);
+        this.subscription = this.budgetPlannerService.expenseDeleted$.subscribe(
+            (expenseId: string): void => {
+                this.messageService.add(`About to delete expense # ${expenseId} from local list...`);
+
+                const budgetPlanner = Object.assign({}, this.budgetPlanner);
+                budgetPlanner.expenses = budgetPlanner.expenses.filter(e => e.id !== expenseId);
+                const year = this.year;
+                const month = this.month;
+
+                this.budgetPlannerService.loadBudgetPlanner({year, month, budgetPlanner});
             }
         );
     }

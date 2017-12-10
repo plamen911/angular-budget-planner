@@ -71,7 +71,7 @@ export class RemoteService {
             );
     }
 
-    deleteExpense(expenseId: number): Observable<any> {
+    deleteExpense(expenseId: string): Observable<any> {
         return this.http
             .delete<any>(baseUrl + 'plan/expense/' + expenseId)
             .pipe(
