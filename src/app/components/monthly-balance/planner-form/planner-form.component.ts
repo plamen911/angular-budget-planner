@@ -3,11 +3,11 @@ import {Router, ActivatedRoute} from '@angular/router';
 import {ToastsManager} from 'ng2-toastr/ng2-toastr';
 import {Subscription} from 'rxjs/Subscription';
 
-import {BudgetPlanner} from '../budget-planner.model'
-import {RemoteService} from '../../../services/remote.service';
-import {MessageService} from '../../../services/message.service';
-import {AuthService} from '../../../services/auth.service';
-import {BudgetPlannerService} from '../../../services/budget-planner.service';
+import {BudgetPlanner} from '../../../core/models/budget-planner.model'
+import {RemoteService} from '../../../core/services/remote.service';
+import {MessageService} from '../../../core/services/message.service';
+import {AuthService} from '../../../core/services/authentication/auth.service';
+import {BudgetPlannerService} from '../../../core/services/budget-planner.service';
 
 @Component({
     selector: 'app-planner-form',
@@ -40,9 +40,6 @@ export class PlannerFormComponent implements OnInit, OnDestroy {
                 this.model = data.budgetPlanner;
                 this.year = data.year;
                 this.month = data.month;
-
-                console.log('inside planner form...');
-                console.log(data);
             }
         );
     }

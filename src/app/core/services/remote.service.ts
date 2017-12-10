@@ -4,9 +4,8 @@ import {catchError, tap} from 'rxjs/operators';
 import {Observable} from 'rxjs/Observable';
 import {ToastsManager} from 'ng2-toastr/ng2-toastr';
 
-import {LoginModel} from '../components/login/login.model';
-import {RegisterModel} from '../components/register/register.model';
-import {ExpenceModel} from "../components/monthly-balance/expence.model";
+import {LoginModel} from '../models/login.model';
+import {RegisterModel} from '../models/register.model';
 
 // const baseUrl = 'http://localhost:5000/';
 const baseUrl = 'https://plamen.thewebdesignco.com/';

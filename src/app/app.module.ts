@@ -14,24 +14,20 @@ import {AppRoutingModule} from './app-routing.module';
 
 // Modules
 import {HttpClientModule} from '@angular/common/http';
-
-// Services
-import {AuthService} from './services/auth.service';
-import {MessageService} from './services/message.service';
-import {RemoteService} from './services/remote.service';
-import {AuthGuard} from './services/auth.guard';
-import {BudgetPlannerService} from './services/budget-planner.service';
+import {GuardsModule} from './core/guards/guards.module';
+import {ServiceModule} from './core/services/services.module';
 
 // Interceptors
 import {HTTP_INTERCEPTORS} from '@angular/common/http';
-import {AuthInterceptor} from './interceptors/auth.interceptor';
+import {AuthInterceptor} from './core/interceptors/auth.interceptor';
+
 import {MessagesComponent} from './components/messages/messages.component';
 import {HeaderComponent} from './components/header/header.component';
 import {FooterComponent} from './components/footer/footer.component';
 import {PlannerFormComponent} from './components/monthly-balance/planner-form/planner-form.component';
 import {ExpenseListComponent} from './components/monthly-balance/expense-list/expense-list.component';
-import { ExpenseFormComponent } from './components/monthly-balance/expense-form/expense-form.component';
-import { PlanCardComponent } from './components/yearly-balance/plan-card/plan-card.component';
+import {ExpenseFormComponent} from './components/monthly-balance/expense-form/expense-form.component';
+import {PlanCardComponent} from './components/yearly-balance/plan-card/plan-card.component';
 
 @NgModule({
     imports: [
@@ -41,7 +37,9 @@ import { PlanCardComponent } from './components/yearly-balance/plan-card/plan-ca
         ReactiveFormsModule,
         AppRoutingModule,
         HttpClientModule,
-        ToastModule.forRoot()
+        ToastModule.forRoot(),
+        GuardsModule,
+        ServiceModule
     ],
     declarations: [
         AppComponent,
@@ -62,12 +60,7 @@ import { PlanCardComponent } from './components/yearly-balance/plan-card/plan-ca
             provide: HTTP_INTERCEPTORS,
             useClass: AuthInterceptor,
             multi: true
-        },
-        AuthService,
-        MessageService,
-        RemoteService,
-        AuthGuard,
-        BudgetPlannerService
+        }
     ],
     bootstrap: [AppComponent]
 })

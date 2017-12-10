@@ -1,12 +1,12 @@
 import {Component, OnInit, ViewContainerRef} from '@angular/core';
 import {Router} from '@angular/router';
+import {ToastsManager} from 'ng2-toastr';
 
-import {RemoteService} from '../../services/remote.service';
-import {AuthService} from '../../services/auth.service';
-import {MessageService} from '../../services/message.service';
-import {LoginModel} from '../login/login.model';
-import {RegisterModel} from './register.model';
-import {ToastsManager} from "ng2-toastr";
+import {RemoteService} from '../../core/services/remote.service';
+import {AuthService} from '../../core/services/authentication/auth.service';
+import {MessageService} from '../../core/services/message.service';
+import {LoginModel} from '../../core/models/login.model';
+import {RegisterModel} from '../../core/models/register.model';
 
 @Component({
     selector: 'app-register',

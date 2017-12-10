@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
-import {RemoteService} from '../../services/remote.service';
-import {AuthService} from '../../services/auth.service';
-import {MessageService} from '../../services/message.service';
-import {MonthlyBalanceModel} from '../../models/monthly-balance.model';
+import {RemoteService} from '../../core/services/remote.service';
+import {AuthService} from '../../core/services/authentication/auth.service';
+import {MessageService} from '../../core/services/message.service';
+import {MonthlyBalanceModel} from '../../core/models/monthly-balance.model';
 
 @Component({
     selector: 'app-yearly-balance',

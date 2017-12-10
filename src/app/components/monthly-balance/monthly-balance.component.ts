@@ -3,12 +3,12 @@ import {Router, ActivatedRoute} from '@angular/router';
 import {Subscription} from 'rxjs/Subscription';
 import {ToastsManager} from 'ng2-toastr/ng2-toastr';
 
-import {AuthService} from '../../services/auth.service';
-import {MessageService} from '../../services/message.service';
-import {RemoteService} from '../../services/remote.service';
-import {BudgetPlanner} from './budget-planner.model';
-import {BudgetPlannerService} from '../../services/budget-planner.service';
-import {numberToMonth} from '../../utils/utils';
+import {AuthService} from '../../core/services/authentication/auth.service';
+import {MessageService} from '../../core/services/message.service';
+import {RemoteService} from '../../core/services/remote.service';
+import {BudgetPlanner} from '../../core/models/budget-planner.model';
+import {BudgetPlannerService} from '../../core/services/budget-planner.service';
+import {numberToMonth} from '../../core/utils/utils';
 
 @Component({
     selector: 'app-monthly-balance',

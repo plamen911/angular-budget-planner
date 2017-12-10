@@ -7,7 +7,7 @@ import {MonthlyBalanceComponent} from './components/monthly-balance/monthly-bala
 import {YearlyBalanceComponent} from './components/yearly-balance/yearly-balance.component';
 import {ExpenseFormComponent} from './components/monthly-balance/expense-form/expense-form.component';
 
-import {AuthGuard} from './services/auth.guard';
+import {AuthGuard} from './core/guards/authentication/auth.guard';
 
 const routes: Routes = [
     {path: '', redirectTo: '/login', pathMatch: 'full'},
