@@ -37,6 +37,9 @@ export class MonthlyBalanceComponent implements OnInit, OnDestroy {
         this.toastr.setRootViewContainerRef(vcr);
         this.numberToMonth = numberToMonth;
 
+        this.year = +(new Date()).getFullYear();
+        this.month = +(new Date()).getMonth() + 1;
+
         this.subscription = this.budgetPlannerService.expenseDeleted$.subscribe(
             (expenseId: string): void => {
                 this.messageService.add(`About to delete expense # ${expenseId} from local list...`);
@@ -49,13 +52,19 @@ export class MonthlyBalanceComponent implements OnInit, OnDestroy {
                 this.budgetPlannerService.loadBudgetPlanner({year, month, budgetPlanner});
             }
         );
+
+        this.route.params.subscribe(params => {
+            this.year = +params['year'] || +(new Date()).getFullYear();
+            this.month = +params['month'] || +(new Date()).getMonth() + 1;
+            this.loadBudgetPlanner(this.year, this.month);
+        });
     }
 
     ngOnInit() {
-        this.year = +this.route.snapshot.paramMap.get('year') || (new Date()).getFullYear();
-        this.month = +this.route.snapshot.paramMap.get('month') || (new Date()).getMonth() + 1;
-
-        this.loadBudgetPlanner(this.year, this.month);
+        // this.year = +this.route.snapshot.paramMap.get('year') || (new Date()).getFullYear();
+        // this.month = +this.route.snapshot.paramMap.get('month') || (new Date()).getMonth() + 1;
+        //
+        // this.loadBudgetPlanner(this.year, this.month);
     }
 
     loadBudgetPlanner(year: number, month: number): void {
