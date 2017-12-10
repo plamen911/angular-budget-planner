@@ -1,4 +1,4 @@
-## Angular final project for the Angular Fundamentals – November 2017@SoftUni course
+## Project for the Angular Fundamentals – November 2017@SoftUni course
 
 Project URL: https://plamen911.github.io
 
