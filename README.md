@@ -1,6 +1,6 @@
-# Angular final project for the Angular Fundamentals – November 2017@SoftUni course
+## Angular final project for the Angular Fundamentals – November 2017@SoftUni course
 
-Project URL: https://plamen911.github.io/login
+Project URL: https://plamen911.github.io
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.5.4.
 
