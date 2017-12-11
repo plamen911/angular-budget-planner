@@ -23,6 +23,7 @@ export class MonthlyBalanceComponent implements OnInit, OnDestroy {
     public subscription: Subscription;
 
     public numberToMonth: any;
+    public submitted: boolean;
 
     constructor(private router: Router,
                 private route: ActivatedRoute,
@@ -35,6 +36,7 @@ export class MonthlyBalanceComponent implements OnInit, OnDestroy {
         this.toastr.setRootViewContainerRef(vcr);
         this.budgetPlanner = new BudgetPlanner(0, 0);
         this.numberToMonth = numberToMonth;
+        this.submitted = false;
 
         this.year = +(new Date()).getFullYear();
         this.month = +(new Date()).getMonth() + 1;
@@ -67,9 +69,11 @@ export class MonthlyBalanceComponent implements OnInit, OnDestroy {
     }
 
     loadBudgetPlanner(year: number, month: number): void {
+        this.submitted = true;
         this.remoteService.getMonthlyBalance(year, month)
             .subscribe(
                 (budgetPlanner: BudgetPlanner): void => {
+                    this.submitted = false;
                     this.messageService.add('Server response: ' + JSON.stringify(budgetPlanner));
                     this.budgetPlanner = budgetPlanner;
 
