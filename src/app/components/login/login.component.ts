@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewContainerRef} from '@angular/core';
 import {Router} from '@angular/router';
 import {ToastsManager} from 'ng2-toastr/ng2-toastr';
 
@@ -20,7 +20,9 @@ export class LoginComponent implements OnInit {
                 private remoteService: RemoteService,
                 private authService: AuthService,
                 private messageService: MessageService,
-                private toastr: ToastsManager) {
+                private toastr: ToastsManager,
+                private vcr: ViewContainerRef) {
+        this.toastr.setRootViewContainerRef(vcr);
         this.model = new LoginModel('', '');
         this.submitted = false;
     }

@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewContainerRef} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ToastsManager} from 'ng2-toastr';
 
@@ -18,7 +18,10 @@ export class HeaderComponent implements OnInit {
                 private route: ActivatedRoute,
                 private router: Router,
                 private messageService: MessageService,
-                private toastr: ToastsManager) {}
+                private toastr: ToastsManager,
+                private vcr: ViewContainerRef) {
+        this.toastr.setRootViewContainerRef(vcr);
+    }
 
     ngOnInit() {
         this.year = +this.route.snapshot.paramMap.get('year') || +(new Date()).getFullYear();

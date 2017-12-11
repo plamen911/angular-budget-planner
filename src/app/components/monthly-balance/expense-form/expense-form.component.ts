@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewContainerRef} from '@angular/core';
 import {Router, ActivatedRoute} from '@angular/router';
 import {ToastsManager} from 'ng2-toastr/ng2-toastr';
 
@@ -29,7 +29,9 @@ export class ExpenseFormComponent implements OnInit {
                 private authService: AuthService,
                 private messageService: MessageService,
                 private budgetPlannerService: BudgetPlannerService,
-                private toastr: ToastsManager) {
+                private toastr: ToastsManager,
+                private vcr: ViewContainerRef) {
+        this.toastr.setRootViewContainerRef(vcr);
         this.year = +this.route.snapshot.paramMap.get('year') || (new Date()).getFullYear();
         this.month = +this.route.snapshot.paramMap.get('month') || (new Date()).getMonth() + 1;
 

@@ -31,7 +31,6 @@ export class ExpenseListComponent implements OnInit, OnDestroy {
                 private budgetPlannerService: BudgetPlannerService,
                 private toastr: ToastsManager,
                 private vcr: ViewContainerRef) {
-
         this.toastr.setRootViewContainerRef(vcr);
         this.model = new BudgetPlanner(0, 0);
         this.submitted = false;

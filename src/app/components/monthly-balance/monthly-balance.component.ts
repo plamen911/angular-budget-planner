@@ -32,9 +32,8 @@ export class MonthlyBalanceComponent implements OnInit, OnDestroy {
                 private budgetPlannerService: BudgetPlannerService,
                 private toastr: ToastsManager,
                 private vcr: ViewContainerRef) {
-
-        this.budgetPlanner = new BudgetPlanner(0, 0);
         this.toastr.setRootViewContainerRef(vcr);
+        this.budgetPlanner = new BudgetPlanner(0, 0);
         this.numberToMonth = numberToMonth;
 
         this.year = +(new Date()).getFullYear();

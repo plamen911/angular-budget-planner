@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewContainerRef} from '@angular/core';
 import {Router} from '@angular/router';
 import {ToastsManager} from 'ng2-toastr';
 
@@ -21,7 +21,9 @@ export class RegisterComponent implements OnInit {
                 private remoteService: RemoteService,
                 private authService: AuthService,
                 private messageService: MessageService,
-                private toastr: ToastsManager) {
+                private toastr: ToastsManager,
+                private vcr: ViewContainerRef) {
+        this.toastr.setRootViewContainerRef(vcr);
         this.model = new RegisterModel('', '', '', '');
         this.submitted = false;
     }

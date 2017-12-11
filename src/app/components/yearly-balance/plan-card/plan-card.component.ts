@@ -1,4 +1,4 @@
-import {Component, OnInit, OnDestroy, ViewContainerRef, Input} from '@angular/core';
+import {Component, OnInit, ViewContainerRef, Input} from '@angular/core';
 import {Router, ActivatedRoute} from '@angular/router';
 import {ToastsManager} from 'ng2-toastr/ng2-toastr';
 
@@ -34,5 +34,4 @@ export class PlanCardComponent implements OnInit {
 
     ngOnInit() {
     }
-
 }
