@@ -24,12 +24,13 @@ Registered users have personal area in the web application accessible after succ
 <img src="http://lynxlake.org/plamen/test/angular-budget-planner/IMG_1517.PNG" alt="Planner Form" height="400" />
 <img src="http://lynxlake.org/plamen/test/angular-budget-planner/IMG_1518.PNG" alt="Expense Form" height="400" />
 <img src="http://lynxlake.org/plamen/test/angular-budget-planner/IMG_1519.PNG" alt="Yearly Balance" height="400" />
-<img src="http://lynxlake.org/plamen/test/angular-budget-planner/IMG_1520.PNG" alt="User List" height="400" />
-<img src="http://lynxlake.org/plamen/test/angular-budget-planner/IMG_1521.PNG" alt="User Form" height="400" />
 
 ### Administration Part
 
 System administrator (email: admin@abv.bg password: admin) have administrative access to the system and permissions to view / create / delete other users.
+
+<img src="http://lynxlake.org/plamen/test/angular-budget-planner/IMG_1520.PNG" alt="User List" height="400" />
+<img src="http://lynxlake.org/plamen/test/angular-budget-planner/IMG_1521.PNG" alt="User Form" height="400" />
 
 ## Deploying an Angular App to Github Pages
 
