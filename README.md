@@ -14,6 +14,8 @@ This is a personal budget planner web application with Angular that only works f
 
 The public part of the projects are the user login and user registration forms.
 
+<img src="http://lynxlake.org/plamen/test/angular-budget-planner/IMG_1515.PNG" alt="Login" />
+
 ### Private Part (User Area)
 
 Registered users have personal area in the web application accessible after successful login.
