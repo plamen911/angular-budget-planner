@@ -79,6 +79,24 @@ export class RemoteService {
             );
     }
 
+    getUsers(): Observable<any> {
+        return this.http
+            .get<any>(baseUrl + 'users')
+            .pipe(
+                tap(res => this.handleServerResponse(res)),
+                catchError(err => this.handleError(err))
+            );
+    }
+
+    deleteUser(id: string): Observable<any> {
+        return this.http
+            .delete<any>(baseUrl + 'users/' + id)
+            .pipe(
+                tap(res => this.handleServerResponse(res)),
+                catchError(err => this.handleError(err))
+            );
+    }
+
     handleServerResponse(res: any): void {
         if (!res.success) {
             this.displayError(res)

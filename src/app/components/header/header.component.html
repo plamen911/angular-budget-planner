@@ -5,6 +5,7 @@
                 <div class="col-md-12">
                     <a *ngIf="authService.isAuthed()" routerLinkActive="active" class="nav-link" routerLink="/monthly-balance/{{year}}/{{month}}">Monthly Balance</a>
                     <a *ngIf="authService.isAuthed()" routerLinkActive="active" class="nav-link" routerLink="/yearly-balance/{{year}}">Yearly Balance</a>
+                    <a *ngIf="authService.isAdmin()" routerLinkActive="active" class="nav-link" routerLink="/users">Users</a>
                     <a *ngIf="authService.isAuthed()" class="nav-link" href="#"
                        title="Logged-in as: {{authService.getUsername()}}" (click)="logout($event)">Logout</a>
                     <a *ngIf="!authService.isAuthed()" routerLinkActive="active" class="nav-link" routerLink="/login">Login</a>

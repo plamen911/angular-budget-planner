@@ -1,0 +1,69 @@
+<app-preloader [loading]="submitted"></app-preloader>
+<div class="container">
+    <div class="row space-top">
+        <div class="col-md-12">
+            <h1>Add User</h1>
+        </div>
+    </div>
+    <div class="row space-top">
+        <div class="col-md-10">
+            <form (submit)="onSubmit()" #registerForm="ngForm">
+                <legend>Add a new user</legend>
+                <div class="form-group">
+                    <label for="name" class="col-md-3">Name</label>
+                    <input type="text"
+                           id="name"
+                           name="name"
+                           [(ngModel)]="model.name"
+                           class="col-md-3"
+                           placeholder="Name"
+                           #name="ngModel"
+                    />
+                </div>
+                <div class="form-group">
+                    <label for="email" class="col-md-3">E-mail</label>
+                    <input type="email"
+                           id="email"
+                           name="email"
+                           [(ngModel)]="model.email"
+                           class="col-md-3"
+                           placeholder="E-mail"
+                           #email="ngModel"
+                    />
+                </div>
+                <div class="form-group">
+                    <label for="password" class="col-md-3">Password</label>
+                    <input type="password"
+                           id="password"
+                           name="password"
+                           [(ngModel)]="model.password"
+                           class="col-md-3"
+                           placeholder="Password"
+                           #password="ngModel"
+                    />
+                </div>
+                <div class="form-group">
+                    <label for="confPassword" class="col-md-3">Repeat password</label>
+                    <input type="password"
+                           id="confPassword"
+                           name="confPassword"
+                           [(ngModel)]="model.confPassword"
+                           class="col-md-3"
+                           placeholder="Password"
+                           #confPassword="ngModel"
+                    />
+                </div>
+                <input type="button"
+                       (click)="onCancel($event)"
+                       value="Cancel"
+                       class="btn btn-default"
+                />
+                <input type="submit"
+                       class="btn btn-secondary pull-right"
+                       [value]="submitted ? 'please wait...' : 'Add'"
+                       [disabled]="submitted"
+                />
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,36 @@
+<app-preloader [loading]="submitted"></app-preloader>
+<div class="container">
+    <div class="row space-top">
+        <div class="col-md-12">
+            <h1 class="pull-left">Manage Users</h1>
+        </div>
+    </div>
+    <div class="row space-top">
+        <div class="col-md-10">
+            <div class="row">
+                <h4 class="col-md-9">User List</h4>
+                <a routerLink="/users/create" class="nav-link btn btn-secondary ml-2 mb-2">Add user</a>
+            </div>
+            <table *ngIf="users" class="table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>E-mail</th>
+                        <th>Is Admin?</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let user of users">
+                        <td>{{user.name}}</td>
+                        <td>{{user.email}}</td>
+                        <td>{{user.isAdmin ? 'Yes' : 'No'}}</td>
+                        <td>
+                            <a *ngIf="user.id !== authService.getUserId()" href="#" (click)="onDelete($event, user)" class="btn btn-secondary">Delete</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

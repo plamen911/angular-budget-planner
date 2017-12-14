@@ -29,6 +29,8 @@ import {ExpenseListComponent} from './components/monthly-balance/expense-list/ex
 import {ExpenseFormComponent} from './components/monthly-balance/expense-form/expense-form.component';
 import {PlanCardComponent} from './components/yearly-balance/plan-card/plan-card.component';
 import { PreloaderComponent } from './components/preloader/preloader.component';
+import { UsersComponent } from './components/users/users.component';
+import { UserFormComponent } from './components/users/user-form/user-form.component';
 
 @NgModule({
     imports: [
@@ -55,7 +57,9 @@ import { PreloaderComponent } from './components/preloader/preloader.component';
         ExpenseListComponent,
         ExpenseFormComponent,
         PlanCardComponent,
-        PreloaderComponent
+        PreloaderComponent,
+        UsersComponent,
+        UserFormComponent
     ],
     providers: [
         {
