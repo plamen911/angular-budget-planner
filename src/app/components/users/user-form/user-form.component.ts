@@ -64,6 +64,11 @@ export class UserFormComponent {
             );
     }
 
+    onCancel(e) {
+        e.preventDefault();
+        this.redirectToPage();
+    }
+
     private redirectToPage(): void {
         this.router.navigateByUrl('/users');
     }
