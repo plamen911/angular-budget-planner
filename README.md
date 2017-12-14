@@ -8,7 +8,7 @@ Node.js server repo: https://github.com/plamen911/nodejs-test-server
 
 ## Brief documentation
 
-This is Personal Planner web application with Angular that uses [Node.js service](https://plamen.thewebdesignco.com/) as back-end.
+This is a personal budget planner web application with Angular that only works for registered users. The user can view and modify monthly budget, add and delete expenses, and see a yearly summary. The application uses custom [Node.js service](https://plamen.thewebdesignco.com/) as back-end, deployed on [DigitalOcean](https://www.digitalocean.com/).
 
 ### Public Part
 
