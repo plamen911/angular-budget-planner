@@ -14,22 +14,19 @@ This is a personal budget planner web application with Angular that only works f
 
 The public part of the projects are the user login and user registration forms.
 
-<img src="http://lynxlake.org/plamen/test/angular-budget-planner/IMG_1515.PNG" alt="Login" height="400" /><img src="http://lynxlake.org/plamen/test/angular-budget-planner/IMG_1516.PNG" alt="Register" height="400" />
+<img src="http://lynxlake.org/plamen/test/angular-budget-planner/IMG_1515.PNG" alt="Login" height="400" /> <img src="http://lynxlake.org/plamen/test/angular-budget-planner/IMG_1516.PNG" alt="Register" height="400" />
 
 ### Private Part (User Area)
 
 Registered users have personal area in the web application accessible after successful login.
 
-<img src="http://lynxlake.org/plamen/test/angular-budget-planner/IMG_1517.PNG" alt="Planner Form" height="400" />
-<img src="http://lynxlake.org/plamen/test/angular-budget-planner/IMG_1518.PNG" alt="Expense Form" height="400" />
-<img src="http://lynxlake.org/plamen/test/angular-budget-planner/IMG_1519.PNG" alt="Yearly Balance" height="400" />
+<img src="http://lynxlake.org/plamen/test/angular-budget-planner/IMG_1517.PNG" alt="Planner Form" height="400" /> <img src="http://lynxlake.org/plamen/test/angular-budget-planner/IMG_1518.PNG" alt="Expense Form" height="400" /> <img src="http://lynxlake.org/plamen/test/angular-budget-planner/IMG_1519.PNG" alt="Yearly Balance" height="400" />
 
 ### Administration Part
 
 System administrator (email: admin@abv.bg password: admin) have administrative access to the system and permissions to view / create / delete other users.
 
-<img src="http://lynxlake.org/plamen/test/angular-budget-planner/IMG_1520.PNG" alt="User List" height="400" />
-<img src="http://lynxlake.org/plamen/test/angular-budget-planner/IMG_1521.PNG" alt="User Form" height="400" />
+<img src="http://lynxlake.org/plamen/test/angular-budget-planner/IMG_1520.PNG" alt="User List" height="400" /> <img src="http://lynxlake.org/plamen/test/angular-budget-planner/IMG_1521.PNG" alt="User Form" height="400" />
 
 ## Deploying an Angular App to Github Pages
 
