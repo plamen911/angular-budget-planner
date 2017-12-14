@@ -1,8 +1,26 @@
-## Project for the Angular Fundamentals – November 2017@SoftUni course
+## Final Project for the Angular Fundamentals – November 2017@SoftUni course
 
-Project URL: https://plamen911.github.io
+Demo url: https://plamen911.github.io
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.5.4.
+Angular client repo: https://github.com/plamen911/angular-budget-planner
+
+Node.js server repo: https://github.com/plamen911/nodejs-test-server
+
+## Brief documentation
+
+This is Personal Planner web application with Angular that uses [Node.js service](https://plamen.thewebdesignco.com/) as back-end.
+
+### Public Part
+
+The public part of the projects are the user login and user registration forms.
+
+### Private Part (User Area)
+
+Registered users have personal area in the web application accessible after successful login.
+
+### Administration Part
+
+System administrator (email: admin@abv.bg password: admin) have administrative access to the system and permissions to view / create / delete other users.
 
 ## Deploying an Angular App to Github Pages
 
